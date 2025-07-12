@@ -4,10 +4,7 @@ import {
   LayoutDashboard,
   Users,
   UserCheck,
-  FileText,
-  MessageSquare,
   BarChart3,
-  BookOpen,
   Settings,
   ChevronLeft,
   ChevronRight,
@@ -25,10 +22,7 @@ const menuItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { id: "manage-mentors", label: "Manage Mentors", icon: Users },
   { id: "manage-mentees", label: "Manage Mentees", icon: UserCheck },
-  { id: "check-ins", label: "Check-In Reports", icon: FileText },
-  { id: "messages", label: "Messages / Feed", icon: MessageSquare },
   { id: "analytics", label: "Analytics", icon: BarChart3 },
-  { id: "curriculum", label: "Curriculum Management", icon: BookOpen },
   { id: "settings", label: "Settings", icon: Settings },
 ];
 
