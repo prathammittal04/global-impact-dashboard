@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, UserCheck, Calendar, MapPin, TrendingUp, Alert } from "lucide-react";
+import { Users, UserCheck, Calendar, MapPin, TrendingUp, AlertCircle } from "lucide-react";
 
 export const DashboardHome = () => {
   const stats = [
@@ -128,7 +128,7 @@ export const DashboardHome = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center">
-              <Alert className="mr-2 h-5 w-5 text-orange-600" />
+              <AlertCircle className="mr-2 h-5 w-5 text-orange-600" />
               Recent Notifications
             </CardTitle>
           </CardHeader>
