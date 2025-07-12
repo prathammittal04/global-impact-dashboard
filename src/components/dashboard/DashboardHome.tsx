@@ -1,42 +1,45 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, UserCheck, Calendar, MapPin, TrendingUp, AlertCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const DashboardHome = () => {
+  const { t } = useLanguage();
+
   const stats = [
     {
-      title: "Total Mentors",
+      title: t("totalMentors"),
       value: "127",
-      icon: Users,
       change: "+12%",
       changeType: "positive",
+      icon: Users,
       color: "text-blue-600",
       bgColor: "bg-blue-100",
     },
     {
-      title: "Total Mentees",
+      title: t("totalMentees"),
       value: "342",
-      icon: UserCheck,
       change: "+23%",
       changeType: "positive",
+      icon: UserCheck,
       color: "text-green-600",
       bgColor: "bg-green-100",
     },
     {
-      title: "Active Check-ins",
+      title: t("activeCheckIns"),
       value: "89",
-      icon: Calendar,
       change: "+8%",
       changeType: "positive",
+      icon: Calendar,
       color: "text-purple-600",
       bgColor: "bg-purple-100",
     },
     {
-      title: "Upcoming Visits",
+      title: t("upcomingVisits"),
       value: "24",
-      icon: MapPin,
       change: "-3%",
       changeType: "negative",
+      icon: MapPin,
       color: "text-orange-600",
       bgColor: "bg-orange-100",
     },
@@ -66,9 +69,9 @@ export const DashboardHome = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+        <h1 className="text-3xl font-bold text-gray-900">{t("dashboard")}</h1>
         <p className="text-gray-600 mt-2 sm:mt-0">
-          Welcome back! Here's what's happening with your entrepreneurship ecosystem.
+          {t("welcomeBack")}
         </p>
       </div>
 
@@ -115,7 +118,7 @@ export const DashboardHome = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <TrendingUp className="mr-2 h-5 w-5 text-blue-600" />
-              Mentee Activity Over Time
+              {t("menteeActivityOverTime")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -129,7 +132,7 @@ export const DashboardHome = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <AlertCircle className="mr-2 h-5 w-5 text-orange-600" />
-              Recent Notifications
+              {t("recentNotifications")}
             </CardTitle>
           </CardHeader>
           <CardContent>

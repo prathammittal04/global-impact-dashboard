@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Menu, User, Settings, LogOut, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +10,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface TopNavigationProps {
   onToggleSidebar: () => void;
@@ -43,6 +44,7 @@ const notifications = [
 
 export const TopNavigation = ({ onToggleSidebar, user, onLogout, currentPage, onPageChange }: TopNavigationProps) => {
   const [showNotifications, setShowNotifications] = useState(false);
+  const { t } = useLanguage();
 
   const handleNotificationClick = () => {
     setShowNotifications(!showNotifications);
@@ -74,6 +76,8 @@ export const TopNavigation = ({ onToggleSidebar, user, onLogout, currentPage, on
           </div>
 
           <div className="flex items-center space-x-4">
+            <LanguageSwitcher />
+            
             <Button 
               variant="ghost" 
               size="sm" 
@@ -97,7 +101,7 @@ export const TopNavigation = ({ onToggleSidebar, user, onLogout, currentPage, on
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuContent className="w-56 bg-white" align="end" forceMount>
                 <div className="flex flex-col space-y-1 p-2">
                   <p className="text-sm font-medium leading-none">{user?.email || "Admin User"}</p>
                   <p className="text-xs leading-none text-muted-foreground">
@@ -107,16 +111,16 @@ export const TopNavigation = ({ onToggleSidebar, user, onLogout, currentPage, on
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <User className="mr-2 h-4 w-4" />
-                  <span>Profile</span>
+                  <span>{t('profile')}</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onPageChange("settings")}>
                   <Settings className="mr-2 h-4 w-4" />
-                  <span>Settings</span>
+                  <span>{t('settings')}</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={onLogout}>
                   <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
+                  <span>{t('logOut')}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -131,7 +135,7 @@ export const TopNavigation = ({ onToggleSidebar, user, onLogout, currentPage, on
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Bell className="mr-2 h-5 w-5 text-blue-600" />
-                Recent Notifications
+                {t('recentNotifications')}
               </CardTitle>
             </CardHeader>
             <CardContent>

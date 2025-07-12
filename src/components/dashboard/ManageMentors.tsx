@@ -13,9 +13,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Edit, Trash2, Mail, Search, Plus } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const ManageMentors = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const { t } = useLanguage();
 
   const mentors = [
     {
@@ -65,21 +67,21 @@ export const ManageMentors = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Manage Mentors</h1>
+        <h1 className="text-3xl font-bold text-gray-900">{t("manageMentors")}</h1>
         <Button className="mt-4 sm:mt-0 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700">
           <Plus className="mr-2 h-4 w-4" />
-          Add New Mentor
+          {t("addNewMentor")}
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Mentor Directory</CardTitle>
+          <CardTitle>{t("mentorDirectory")}</CardTitle>
           <div className="flex items-center space-x-2">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
               <Input
-                placeholder="Search mentors by name, email, or location..."
+                placeholder={t("searchMentors")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -92,13 +94,13 @@ export const ManageMentors = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Location</TableHead>
-                  <TableHead>Assigned Mentees</TableHead>
-                  <TableHead>Last Check-in</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Actions</TableHead>
+                  <TableHead>{t("name")}</TableHead>
+                  <TableHead>{t("email")}</TableHead>
+                  <TableHead>{t("location")}</TableHead>
+                  <TableHead>{t("assignedMentees")}</TableHead>
+                  <TableHead>{t("lastCheckIn")}</TableHead>
+                  <TableHead>{t("status")}</TableHead>
+                  <TableHead>{t("actions")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -109,7 +111,7 @@ export const ManageMentors = () => {
                     <TableCell>{mentor.location}</TableCell>
                     <TableCell>
                       <Badge variant="outline" className="bg-blue-50 text-blue-700">
-                        {mentor.assignedMentees} mentees
+                        {mentor.assignedMentees} {t("mentees")}
                       </Badge>
                     </TableCell>
                     <TableCell>{mentor.lastCheckIn}</TableCell>
@@ -122,7 +124,7 @@ export const ManageMentors = () => {
                             : "bg-gray-100 text-gray-800"
                         }
                       >
-                        {mentor.status}
+                        {mentor.status === "Active" ? t("active") : t("inactive")}
                       </Badge>
                     </TableCell>
                     <TableCell>

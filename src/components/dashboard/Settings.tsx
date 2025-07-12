@@ -6,15 +6,18 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Settings as SettingsIcon, Save, Bell, Globe, Shield } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Settings = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
+        <h1 className="text-3xl font-bold text-gray-900">{t("settings")}</h1>
         <Button className="mt-4 sm:mt-0 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700">
           <Save className="mr-2 h-4 w-4" />
-          Save Changes
+          {t("saveChanges")}
         </Button>
       </div>
 
@@ -23,19 +26,19 @@ export const Settings = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <SettingsIcon className="mr-2 h-5 w-5 text-blue-600" />
-              Organization Settings
+              {t("organizationSettings")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="org-name">Organization Name</Label>
+              <Label htmlFor="org-name">{t("organizationName")}</Label>
               <Input
                 id="org-name"
                 defaultValue="International Centre for Entrepreneurship and Career Development"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="org-email">Contact Email</Label>
+              <Label htmlFor="org-email">{t("contactEmail")}</Label>
               <Input
                 id="org-email"
                 type="email"
@@ -43,14 +46,14 @@ export const Settings = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="org-website">Website</Label>
+              <Label htmlFor="org-website">{t("website")}</Label>
               <Input
                 id="org-website"
                 defaultValue="https://www.icecd.org"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="org-phone">Phone Number</Label>
+              <Label htmlFor="org-phone">{t("phoneNumber")}</Label>
               <Input
                 id="org-phone"
                 defaultValue="+1 (555) 123-4567"
@@ -63,15 +66,15 @@ export const Settings = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <Bell className="mr-2 h-5 w-5 text-green-600" />
-              Notification Settings
+              {t("notificationSettings")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Email Notifications</Label>
+                <Label>{t("emailNotifications")}</Label>
                 <p className="text-sm text-gray-600">
-                  Receive email alerts for important updates
+                  {t("emailNotificationsDesc")}
                 </p>
               </div>
               <Switch defaultChecked />
@@ -79,9 +82,9 @@ export const Settings = () => {
             <Separator />
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Overdue Check-ins</Label>
+                <Label>{t("overdueCheckIns")}</Label>
                 <p className="text-sm text-gray-600">
-                  Alert when check-ins are overdue
+                  {t("overdueCheckInsDesc")}
                 </p>
               </div>
               <Switch defaultChecked />
@@ -89,9 +92,9 @@ export const Settings = () => {
             <Separator />
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>New Applications</Label>
+                <Label>{t("newApplications")}</Label>
                 <p className="text-sm text-gray-600">
-                  Notify about new mentor/mentee applications
+                  {t("newApplicationsDesc")}
                 </p>
               </div>
               <Switch defaultChecked />
@@ -99,9 +102,9 @@ export const Settings = () => {
             <Separator />
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Weekly Reports</Label>
+                <Label>{t("weeklyReports")}</Label>
                 <p className="text-sm text-gray-600">
-                  Send weekly summary reports
+                  {t("weeklyReportsDesc")}
                 </p>
               </div>
               <Switch />
@@ -113,26 +116,26 @@ export const Settings = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <Globe className="mr-2 h-5 w-5 text-purple-600" />
-              Regional Settings
+              {t("regionalSettings")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="timezone">Default Timezone</Label>
+              <Label htmlFor="timezone">{t("defaultTimezone")}</Label>
               <Input
                 id="timezone"
                 defaultValue="GMT (Greenwich Mean Time)"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="language">Default Language</Label>
+              <Label htmlFor="language">{t("defaultLanguage")}</Label>
               <Input
                 id="language"
                 defaultValue="English"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="currency">Currency</Label>
+              <Label htmlFor="currency">{t("currency")}</Label>
               <Input
                 id="currency"
                 defaultValue="USD ($)"
@@ -145,15 +148,15 @@ export const Settings = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <Shield className="mr-2 h-5 w-5 text-orange-600" />
-              Security Settings
+              {t("securitySettings")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Two-Factor Authentication</Label>
+                <Label>{t("twoFactorAuth")}</Label>
                 <p className="text-sm text-gray-600">
-                  Add an extra layer of security
+                  {t("twoFactorAuthDesc")}
                 </p>
               </div>
               <Switch />
@@ -161,16 +164,16 @@ export const Settings = () => {
             <Separator />
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Session Timeout</Label>
+                <Label>{t("sessionTimeout")}</Label>
                 <p className="text-sm text-gray-600">
-                  Auto-logout after 2 hours of inactivity
+                  {t("sessionTimeoutDesc")}
                 </p>
               </div>
               <Switch defaultChecked />
             </div>
             <Separator />
             <Button variant="outline" className="w-full">
-              Change Password
+              {t("changePassword")}
             </Button>
           </CardContent>
         </Card>

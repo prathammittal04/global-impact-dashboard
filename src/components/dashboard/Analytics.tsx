@@ -9,11 +9,14 @@ import {
   DollarSign,
   Globe,
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Analytics = () => {
+  const { t } = useLanguage();
+
   const kpiData = [
     {
-      title: "Entrepreneurs Trained",
+      title: t("entrepreneursTrained"),
       value: "1,247",
       change: "+18%",
       icon: Users,
@@ -21,7 +24,7 @@ export const Analytics = () => {
       bgColor: "bg-blue-100",
     },
     {
-      title: "Follow-up Rate",
+      title: t("followUpRate"),
       value: "87%",
       change: "+5%",
       icon: Target,
@@ -29,7 +32,7 @@ export const Analytics = () => {
       bgColor: "bg-green-100",
     },
     {
-      title: "Engagement Rate",
+      title: t("engagementRate"),
       value: "92%",
       change: "+12%",
       icon: TrendingUp,
@@ -37,7 +40,7 @@ export const Analytics = () => {
       bgColor: "bg-purple-100",
     },
     {
-      title: "Average Profit Uplift",
+      title: t("averageProfitUplift"),
       value: "34%",
       change: "+8%",
       icon: DollarSign,
@@ -55,9 +58,9 @@ export const Analytics = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Analytics & Impact</h1>
+        <h1 className="text-3xl font-bold text-gray-900">{t("analyticsAndImpact")}</h1>
         <p className="text-gray-600 mt-2 sm:mt-0">
-          Track the impact of your entrepreneurship programs
+          {t("trackImpact")}
         </p>
       </div>
 
@@ -98,7 +101,7 @@ export const Analytics = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <BarChart3 className="mr-2 h-5 w-5 text-blue-600" />
-              Program Impact Over Time
+              {t("programImpactOverTime")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -112,7 +115,7 @@ export const Analytics = () => {
           <CardHeader>
             <CardTitle className="flex items-center">
               <Globe className="mr-2 h-5 w-5 text-green-600" />
-              Regional Performance
+              {t("regionalPerformance")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -125,14 +128,14 @@ export const Analytics = () => {
                   <div>
                     <h4 className="font-medium text-gray-900">{region.region}</h4>
                     <p className="text-sm text-gray-600">
-                      {region.mentees} mentees • {region.mentors} mentors
+                      {region.mentees} {t("mentees")} • {region.mentors} mentors
                     </p>
                   </div>
                   <Badge
                     variant="outline"
                     className="bg-green-50 text-green-700"
                   >
-                    {region.completion}% completion
+                    {region.completion}% {t("completion")}
                   </Badge>
                 </div>
               ))}
@@ -145,36 +148,36 @@ export const Analytics = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Success Stories</CardTitle>
+            <CardTitle>{t("successStories")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-600 mb-2">156</div>
-              <p className="text-gray-600">Successful businesses launched</p>
+              <p className="text-gray-600">{t("successfulBusinessesLaunched")}</p>
             </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Training Completion</CardTitle>
+            <CardTitle>{t("trainingCompletion")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center">
               <div className="text-3xl font-bold text-green-600 mb-2">89%</div>
-              <p className="text-gray-600">Average completion rate</p>
+              <p className="text-gray-600">{t("averageCompletionRate")}</p>
             </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Outreach Growth</CardTitle>
+            <CardTitle>{t("outreachGrowth")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center">
               <div className="text-3xl font-bold text-purple-600 mb-2">+42%</div>
-              <p className="text-gray-600">Year-over-year growth</p>
+              <p className="text-gray-600">{t("yearOverYearGrowth")}</p>
             </div>
           </CardContent>
         </Card>

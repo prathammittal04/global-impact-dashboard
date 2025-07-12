@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
@@ -8,8 +7,10 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
+  Bell,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface SidebarProps {
   collapsed: boolean;
@@ -18,15 +19,18 @@ interface SidebarProps {
   onPageChange: (page: string) => void;
 }
 
-const menuItems = [
-  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { id: "manage-mentors", label: "Manage Mentors", icon: Users },
-  { id: "manage-mentees", label: "Manage Mentees", icon: UserCheck },
-  { id: "analytics", label: "Analytics", icon: BarChart3 },
-  { id: "settings", label: "Settings", icon: Settings },
-];
-
 export const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange }: SidebarProps) => {
+  const { t } = useLanguage();
+
+  const menuItems = [
+    { id: "dashboard", label: t("dashboard"), icon: LayoutDashboard },
+    { id: "manage-mentors", label: t("manageMentors"), icon: Users },
+    { id: "manage-mentees", label: t("manageMentees"), icon: UserCheck },
+    { id: "analytics", label: t("analytics"), icon: BarChart3 },
+    { id: "notifications", label: t("notifications"), icon: Bell },
+    { id: "settings", label: t("settings"), icon: Settings },
+  ];
+
   return (
     <div
       className={cn(
